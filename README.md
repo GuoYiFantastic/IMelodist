@@ -1,4 +1,6 @@
 # InternLM2-Beethoven
+![Open in OpenXLab](https://cdn-static.openxlab.org.cn/header/openxlab_models.svg)
+
 Beethoven large model based on InternLM2.
 
 ## 功能&技术路线 测试
