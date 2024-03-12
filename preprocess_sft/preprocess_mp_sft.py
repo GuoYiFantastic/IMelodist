@@ -102,7 +102,7 @@ for i, data in tqdm(enumerate(dataset_irishman)):
         'input': input_prompt,
         'output': output
     }
-    final_dataset.append([{'conversation': conversation}])
+    final_dataset.append({'conversation': [conversation]})
 
 random.shuffle(final_dataset)
 
