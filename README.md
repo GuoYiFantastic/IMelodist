@@ -20,3 +20,7 @@ Melodist large model based on InternLM2-chat.
 <a href = "https://github.com/GuoYiFantastic/InternLM2-Beethoven/graphs/contributors">
   <img src = "https://contrib.rocks/image?repo=GuoYiFantastic/InternLM2-Beethoven"/>
 </a>
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=GuoYiFantastic/IMelodist&type=Date)](https://star-history.com/#GuoYiFantastic/IMelodist&Date)
