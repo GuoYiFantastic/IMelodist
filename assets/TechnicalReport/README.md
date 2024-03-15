@@ -1,6 +1,6 @@
-# IMelodist技术报告目录
+# 目录
 
-- [IMelodist技术报告目录](#imelodist技术报告目录)
+- [目录](#目录)
 - [IMelodist技术报告](#imelodist技术报告)
   - [乐谱数据](#乐谱数据)
   - [微调](#微调)
