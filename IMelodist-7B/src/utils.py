@@ -20,7 +20,8 @@ def post_process(output: str):
         return None
     else:
         data = splitted[metadata_idx].split(' ')
-        data.append(splitted[abc_idx])
+        for notation in splitted[abc_idx:]:
+            data.append(notation)
         return '\n'.join(data)
         
     
