@@ -1,6 +1,7 @@
-# 目录
+# IMelodist技术报告
 
-- [目录](#目录)
+IMelodist，即InternLM-Melodist，是基于internLM2-chat模型，利用开源框架xtuner微调打造的作曲家大模型。IMelodist不仅能够进行音乐话题的问答，还能像作曲家一样作曲。
+
 - [IMelodist技术报告](#imelodist技术报告)
   - [乐谱数据](#乐谱数据)
   - [微调](#微调)
@@ -10,10 +11,6 @@
   - [下游任务](#下游任务)
   - [数据收集](#数据收集)
   - [未来展望](#未来展望)
-
-# IMelodist技术报告
-
-IMelodist，即InternLM-Melodist，是基于internLM2-chat模型，利用开源框架xtuner微调打造的作曲家大模型。IMelodist不仅能够进行音乐话题的问答，还能像作曲家一样作曲。
 
 ## 乐谱数据
 训练所用数据中的乐谱格式为ABC记法。采用ABC乐谱的优势有：
