@@ -4,7 +4,7 @@
 ![HF Dataset Increment](https://img.shields.io/badge/Datasets(increment)-Datasets?style=flat&logoColor=%235c5c5c&label=%F0%9F%A4%97Huggingface&color=%23d9b125&link=https%3A%2F%2Fhuggingface.co%2Fdatasets%2FPommesPeter%2Fimelodist-increment)
 ![HF Dataset SFT](https://img.shields.io/badge/Datasets(sft)-Datasets?style=flat&logoColor=%235c5c5c&label=%F0%9F%A4%97Huggingface&color=%23d9b125&link=https%3A%2F%2Fhuggingface.co%2Fdatasets%2FPommesPeter%2Fimelodist-sft)
 
-![Banner](./assets/banner.png)
+<img src="./assets/banner.png"/>
 
 Melodist large model based on InternLM2-chat.
 
@@ -13,10 +13,9 @@ Melodist large model based on InternLM2-chat.
 
 ## Basic Framework
 
-![Framework](./assets/framework.png)
+<img src="./assets/framework.png"/>
 
-
-## Set up
+## Usasge
 
 
 ## Contributors
