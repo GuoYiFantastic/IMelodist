@@ -11,6 +11,10 @@ Melodist large model based on InternLM2-chat.
 [technical report](),
 [demo]()
 
+## Basic Framework
+
+![Framework](./assets/framework.png)
+
 
 ## Set up
 
