@@ -1,4 +1,7 @@
 # IMelodist
+
+> _Music is a higher revelation than all wisdom and philosophy._ — Ludwig van Beethoven
+
 [![Open in OpenXLab](https://cdn-static.openxlab.org.cn/header/openxlab_models.svg)](https://openxlab.org.cn/models/detail/EchoPeter/IMelodist)
 ![HF Model](https://img.shields.io/badge/Models-Models?style=flat&logoColor=%235c5c5c&label=%F0%9F%A4%97Huggingface&color=%23d9b125&link=https%3A%2F%2Fhuggingface.co%2Fdatasets%2FPommesPeter%2Fimelodist-sft)
 ![HF Dataset Increment](https://img.shields.io/badge/Datasets(increment)-Datasets?style=flat&logoColor=%235c5c5c&label=%F0%9F%A4%97Huggingface&color=%23d9b125&link=https%3A%2F%2Fhuggingface.co%2Fdatasets%2FPommesPeter%2Fimelodist-increment)
@@ -6,10 +9,10 @@
 
 <img src="./assets/banner.png"/>
 
-Melodist large model based on InternLM2-chat.
+Melodist large model based on InternLM2-chat. 
 
 [technical report](),
-[demo]()
+[demo]()  
 
 ## Basic Framework
 
@@ -18,6 +21,7 @@ Melodist large model based on InternLM2-chat.
 ## Feature
 
 - 扩展 Internlm2-7B 的能力，接入音乐生成功能
+- 更高质量的音乐知识、自我认知等数据
 - 通用的 ABC 乐谱模板匹配
 - 支持 ABC 乐谱格式转换 (wav, midi, etc.)
 
