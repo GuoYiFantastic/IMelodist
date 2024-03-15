@@ -35,9 +35,19 @@ from modelscope import snapshot_download
 
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
-model_id = 'PommesPeter/IMelodist-chat-7b'
-mode_name_or_path = snapshot_download(model_id, revision='master')
 
+loading_type = "openxlab"
+if loading_type == "modelscope":
+    model_id = 'PommesPeter/IMelodist-chat-7b'
+    mode_name_or_path = snapshot_download(model_id, revision='master')
+elif loading_type == "openxlab":
+    mode_name_or_path = "./IMelodist"
+    os.system(f"git clone https://code.openxlab.org.cn/EchoPeter/IMelodist.git {mode_name_or_path}")
+    os.system(f"cd {mode_name_or_path} && git lfs pull")
+else:
+    mode_name_or_path = "PommesPeter/IMelodist"
+
+    
 logger = logging.get_logger(__name__)
 
 tmp_path = "./chat/tmp"

@@ -2,3 +2,7 @@ midi2audio
 music21
 streamlit
 transformers
+einops
+xtuner
+ffmpy
+charset-normalizer
