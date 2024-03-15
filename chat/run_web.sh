@@ -1,0 +1,1 @@
+streamlit run chat/IMelodist_demo.py --server.address=127.0.0.1

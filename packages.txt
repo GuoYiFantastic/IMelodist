@@ -1,0 +1,6 @@
+abcmidi
+fluidsynth
+git-lfs
+wget
+ca-certificates
+git
