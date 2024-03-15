@@ -15,7 +15,6 @@ Please run with the command `streamlit run path/to/web_demo.py
 Using `python path/to/web_demo.py` may cause unknown problems.
 """
 
-# isort: skip_file
 import os
 import subprocess
 import time
@@ -32,13 +31,14 @@ from torch import nn
 from transformers.generation.utils import LogitsProcessorList, StoppingCriteriaList
 from transformers.utils import logging
 
-from transformers import AutoTokenizer, AutoModelForCausalLM  # isort: skip
+from modelscope import snapshot_download
+
+from transformers import AutoTokenizer, AutoModelForCausalLM
+
+model_id = 'PommesPeter/IMelodist-chat-7b'
+mode_name_or_path = snapshot_download(model_id, revision='master')
 
 logger = logging.get_logger(__name__)
-
-base_path = "./IMelodist"
-os.system(f"git clone https://code.openxlab.org.cn/EchoPeter/IMelodist.git {base_path}")
-os.system(f"cd {base_path} && git lfs pull")
 
 tmp_path = "./chat/tmp"
 print("seed: ", torch.seed())
@@ -201,11 +201,11 @@ def on_btn_click():
 @st.cache_resource
 def load_model():
     model = (
-        AutoModelForCausalLM.from_pretrained(base_path, trust_remote_code=True)
+        AutoModelForCausalLM.from_pretrained(mode_name_or_path, trust_remote_code=True)
         .to(torch.bfloat16)
         .cuda()
     )
-    tokenizer = AutoTokenizer.from_pretrained(base_path, trust_remote_code=True)
+    tokenizer = AutoTokenizer.from_pretrained(mode_name_or_path, trust_remote_code=True)
     return model, tokenizer
 
 
