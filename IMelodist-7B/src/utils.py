@@ -12,7 +12,7 @@ def post_process(output: str):
     metadata_idx = None
     abc_idx = None
     for i, line in enumerate(splitted):
-        if line.lower().startswith('x'):
+        if line.lower().startswith('x:'):
             metadata_idx = i
             abc_idx = i + 1
             break
