@@ -78,7 +78,7 @@ Stage 3 Post-process of translations
 # with open('./translation.pkl','wb') as f:
 #     pickle.dump(translation, f)
 
-### Results of the first 3 stages is in ./translation.pkl. Feel free to uncomment the code and run yourself
+### Results of the first 3 stages are in ./translation.pkl. Feel free to uncomment the code and run yourself
 
 """
 Stage 4: Build SFT dataset
@@ -108,7 +108,7 @@ for i, data in tqdm(enumerate(dataset_irishman)):
 
 random.shuffle(final_dataset)
 
-with open(f'./sft_dataset/sft-dataset.json','w',encoding='utf-8') as f:
+with open('./sft_dataset/sft-dataset.json','w',encoding='utf-8') as f:
     json.dump(final_dataset, f, ensure_ascii=False, indent=4)
 
     
