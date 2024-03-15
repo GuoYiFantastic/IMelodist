@@ -6,3 +6,4 @@ einops
 xtuner
 ffmpy
 charset-normalizer
+requests~=2.28.2
