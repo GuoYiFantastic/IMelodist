@@ -1,5 +1,0 @@
-torch @ https://download.pytorch.org/whl/cu118
-midi2audio
-music21
-streamlit
-transformers
