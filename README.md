@@ -61,13 +61,13 @@ Melodist large model based on InternLM2-chat.
       archivePrefix={arXiv},
       primaryClass={cs.SD}
 ```
-## Special thanks
+## Acknowledgement
 
-+ 感谢[上海人工智能实验室](https://www.shlab.org.cn)
++ [上海人工智能实验室](https://www.shlab.org.cn)
   
-+ 感谢 [书生·浦语开源训练营](https://github.com/InternLM) 的技术指导以及算力
++ [书生·浦语开源训练营](https://github.com/InternLM) 的技术指导以及算力支持
 
-+ 感谢来自[sander-wood](https://huggingface.co/datasets/sander-wood) 和 [m-a-p](https://huggingface.co/m-a-p) 的开源数据集
++ [sander-wood](https://huggingface.co/datasets/sander-wood) 和 [m-a-p](https://huggingface.co/m-a-p) 的开源数据集
 ## Contributors
 
 <a href = "https://github.com/GuoYiFantastic/InternLM2-Beethoven/graphs/contributors">
