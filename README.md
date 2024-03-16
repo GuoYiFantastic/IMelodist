@@ -29,13 +29,27 @@ Melodist large model based on InternLM2-chat.
 ## BibTeX entry and citation info
 
 ```bibtex
-@misc{wu2023tunesformer,
-      title={TunesFormer: Forming Irish Tunes with Control Codes by Bar Patching}, 
-      author={Shangda Wu and Xiaobing Li and Feng Yu and Maosong Sun},
-      year={2023},
-      eprint={2301.02884},
-      archivePrefix={arXiv},
-      primaryClass={cs.SD}
+@inproceedings{DBLP:conf/hcmir/WuLY023,
+  author       = {Shangda Wu and
+                  Xiaobing Li and
+                  Feng Yu and
+                  Maosong Sun},
+  editor       = {Lorenzo Porcaro and
+                  Roser Batlle{-}Roca and
+                  Emilia G{\'{o}}mez},
+  title        = {TunesFormer: Forming Irish Tunes with Control Codes by Bar Patching},
+  booktitle    = {Proceedings of the 2nd Workshop on Human-Centric Music Information
+                  Retrieval 2023 co-located with the 24th International Society for
+                  Music Information Retrieval Conference {(ISMIR} 2023), Milan, Italy,
+                  November 10, 2023},
+  series       = {{CEUR} Workshop Proceedings},
+  volume       = {3528},
+  publisher    = {CEUR-WS.org},
+  year         = {2023},
+  url          = {https://ceur-ws.org/Vol-3528/paper1.pdf},
+  timestamp    = {Tue, 19 Dec 2023 17:15:12 +0100},
+  biburl       = {https://dblp.org/rec/conf/hcmir/WuLY023.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 ```
 ```bibtex
