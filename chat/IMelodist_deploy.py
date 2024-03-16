@@ -51,12 +51,6 @@ else:
 logger = logging.get_logger(__name__)
 
 tmp_path = "./chat/tmp"
-print("seed: ", torch.seed())
-seed = 5659266097076124302
-torch.manual_seed(seed)
-torch.cuda.manual_seed_all(seed)
-random.seed(seed)
-
 
 @dataclass
 class GenerationConfig:
