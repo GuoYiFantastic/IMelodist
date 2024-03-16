@@ -2,3 +2,8 @@ midi2audio
 music21
 streamlit
 transformers
+einops
+xtuner
+ffmpy
+charset-normalizer
+requests~=2.28.2
