@@ -24,7 +24,34 @@ Melodist large model based on InternLM2-chat.
 - 通用的 ABC 乐谱模板匹配
 - 支持 ABC 乐谱格式转换 (wav, midi, etc.)
 
+## BibTeX entry and citation info
 
+```bibtex
+@misc{https://doi.org/10.48550/arxiv.2301.02884,
+  title = {TunesFormer: Forming Irish Tunes with Control Codes by Bar Patching},
+      author={Shangda Wu and Xiaobing Li and Feng Yu and Maosong Sun},
+      year={2023},
+      eprint={2301.02884},
+      archivePrefix={arXiv},
+      primaryClass={cs.SD}
+}
+```
+```bibtex
+@misc{yuan2024chatmusician,
+      title={ChatMusician: Understanding and Generating Music Intrinsically with LLM}, 
+      author={Ruibin Yuan and Hanfeng Lin and Yi Wang and Zeyue Tian and Shangda Wu and Tianhao Shen and Ge Zhang and Yuhang Wu and Cong Liu and Ziya Zhou and Ziyang Ma and Liumeng Xue and Ziyu Wang and Qin Liu and Tianyu Zheng and Yizhi Li and Yinghao Ma and Yiming Liang and Xiaowei Chi and Ruibo Liu and Zili Wang and Pengfei Li and Jingcheng Wu and Chenghua Lin and Qifeng Liu and Tao Jiang and Wenhao Huang and Wenhu Chen and Emmanouil Benetos and Jie Fu and Gus Xia and Roger Dannenberg and Wei Xue and Shiyin Kang and Yike Guo},
+      year={2024},
+      eprint={2402.16153},
+      archivePrefix={arXiv},
+      primaryClass={cs.SD}
+```
+## Special thanks
+
++ **感谢[上海人工智能实验室](https://www.shlab.org.cn)**
+  
++ **感谢 [书生·浦语开源训练营](https://github.com/InternLM) 的技术指导以及算力**
+
++ **感谢 ABC数据的整理和开源**
 ## Contributors
 
 <a href = "https://github.com/GuoYiFantastic/InternLM2-Beethoven/graphs/contributors">
