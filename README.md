@@ -15,7 +15,7 @@ Melodist large model based on InternLM2-chat.
 [🌐Video Demo](https://www.bilibili.com/video/BV13j421o7nZ/?spm_id_from=333.999.0.0&vd_source=ed4c533bf4cce5e0d0329d8c60182037)  
 
 ## Basic Framework
-<img src="./assets/framwork01.jpg"/>
+<img src="./assets/framework.png"/>
 
 ## Future
 
@@ -47,11 +47,11 @@ Melodist large model based on InternLM2-chat.
 ```
 ## Special thanks
 
-+ **感谢[上海人工智能实验室](https://www.shlab.org.cn)**
++ 感谢[上海人工智能实验室](https://www.shlab.org.cn)
   
-+ **感谢 [书生·浦语开源训练营](https://github.com/InternLM) 的技术指导以及算力**
++ 感谢 [书生·浦语开源训练营](https://github.com/InternLM) 的技术指导以及算力
 
-+ **感谢 ABC数据的整理和开源**
++ 感谢来自[sander-wood](https://huggingface.co/datasets/sander-wood) 和 [m-a-p](https://huggingface.co/m-a-p) 的开源数据集
 ## Contributors
 
 <a href = "https://github.com/GuoYiFantastic/InternLM2-Beethoven/graphs/contributors">
