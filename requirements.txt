@@ -3,7 +3,6 @@ music21==9.1.0
 streamlit==1.31.1
 transformers==4.38.2
 einops==0.7.0
-xtuner
 ffmpy==0.3.2
 charset-normalizer==2.0.4
 requests~=2.28.2
