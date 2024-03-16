@@ -17,6 +17,8 @@ Melodist large model based on InternLM2-chat.
 ## Basic Framework
 <img src="./assets/framework.png"/>
 
+## Start
+
 ## Future
 
 - 扩展 Internlm2-7B 的能力，接入音乐生成功能
