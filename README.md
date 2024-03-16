@@ -29,8 +29,8 @@ Melodist large model based on InternLM2-chat.
 ## BibTeX entry and citation info
 
 ```bibtex
-@misc{https://doi.org/10.48550/arxiv.2301.02884,
-  title = {TunesFormer: Forming Irish Tunes with Control Codes by Bar Patching},
+@misc{wu2023tunesformer,
+      title={TunesFormer: Forming Irish Tunes with Control Codes by Bar Patching}, 
       author={Shangda Wu and Xiaobing Li and Feng Yu and Maosong Sun},
       year={2023},
       eprint={2301.02884},
