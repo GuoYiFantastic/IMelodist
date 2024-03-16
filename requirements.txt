@@ -1,5 +1,5 @@
 midi2audio==0.1.1
-music21==9.1.0
+music21==8.3.0
 streamlit==1.31.1
 transformers==4.38.2
 einops==0.7.0
