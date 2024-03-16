@@ -17,7 +17,7 @@ Melodist large model based on InternLM2-chat.
 ## Basic Framework
 <img src="./assets/framework.png"/>
 
-## Start
+## How to start
 #### 安装依赖
 ```
 #此处我们使用的环境是ubuntu20.04
