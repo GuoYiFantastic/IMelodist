@@ -11,7 +11,7 @@
 
 Melodist large model based on InternLM2-chat. 
 
-[📖Technical Report](assets/TechnicalReport/README.md) |
+[📖Technical Report](assets/TechnicalReport/) |
 [🌐Video Demo](https://www.bilibili.com/video/BV13j421o7nZ/?spm_id_from=333.999.0.0&vd_source=ed4c533bf4cce5e0d0329d8c60182037)  
 
 ## Basic Framework

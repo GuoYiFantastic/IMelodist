@@ -253,7 +253,7 @@ def combine_history(prompt):
     return total_prompt
 
 
-def post_process(output: str):
+def post_process_abc(output: str):
     splitted = output.splitlines()
     metadata_idx = None
     abc_idx = None
@@ -271,12 +271,12 @@ def post_process(output: str):
         return "\n".join(data)
 
 
-def postprocess_abc(text):
+def gen_wav(text):
     # A directory used to store everything generated in this web_demo launch
     launch_time = time.time()
     os.makedirs(f"{tmp_path}/{launch_time}", exist_ok=True)
 
-    abc_notation = post_process(text)
+    abc_notation = post_process_abc(text)
     abc_time = time.time()
     print(f"extract abc block: {abc_notation}")
     if abc_notation:
@@ -301,11 +301,12 @@ def postprocess_abc(text):
 
 
 def chat_melody(text):
-    svg, wav = postprocess_abc((text))
+    svg, wav = gen_wav(text)
     if wav != None:
         audio_file = open(wav, "rb")
         audio_bytes = audio_file.read()
         st.audio(audio_bytes, format="audio/wav")
+    return wav
 
 
 def main():
@@ -332,6 +333,10 @@ def main():
     for message in st.session_state.messages:
         with st.chat_message(message["role"], avatar=message.get("avatar")):
             st.markdown(message["content"])
+            if message["wav"] != None:
+                audio_file = open(message["wav"], "rb")
+                audio_bytes = audio_file.read()
+                st.audio(audio_bytes, format="audio/wav")
 
     # Accept user input
     if prompt := st.chat_input("Hey, melody time is coming!"):
@@ -341,7 +346,7 @@ def main():
         real_prompt = combine_history(prompt)
         # Add user message to chat history
         st.session_state.messages.append(
-            {"role": "user", "content": prompt, "avatar": user_avator}
+            {"role": "user", "content": prompt, "avatar": user_avator,"wav":None,}
         )
 
         with st.chat_message("robot", avatar=robot_avator):
@@ -356,13 +361,14 @@ def main():
                 # Display robot response in chat message container
                 message_placeholder.markdown(cur_response + "▌")
             message_placeholder.markdown(cur_response)
-            chat_melody(cur_response)
+            wav_path = chat_melody(cur_response)
         # Add robot response to chat history
         st.session_state.messages.append(
             {
                 "role": "robot",
                 "content": cur_response,  # pylint: disable=undefined-loop-variable
                 "avatar": robot_avator,
+                "wav": wav_path,
             }
         )
         # chat_melody(cur_response)
