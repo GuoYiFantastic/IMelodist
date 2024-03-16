@@ -18,6 +18,23 @@ Melodist large model based on InternLM2-chat.
 <img src="./assets/framework.png"/>
 
 ## Start
+#### 安装依赖
+```
+#此处我们使用的环境是ubuntu20.04
+sudo apt install $(echo -e $(cat packages.txt))
+pip install -r requirements.txt
+```
+#### 下载模型
+```
+git lfs install
+git clone https://code.openxlab.org.cn/EchoPeter/IMelodist.git
+```
+#### 运行web_demo
+将[IMelodist_demo.py](https://github.com/GuoYiFantastic/IMelodist/blob/main/chat/IMelodist_demo.py)文件中第42行的`model_path`改成本地IMelodist**模型**所在路径后，运行以下指令。
+```
+# 确保terminal所在位置为repo主目录
+streamlit run chat/IMelodist_demo.py --server.address=0.0.0.0 --server.port 7860
+```
 
 ## Future
 
