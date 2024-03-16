@@ -36,7 +36,7 @@ from modelscope import snapshot_download
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 
-loading_type = "openxlab"
+loading_type = "modelscope"
 if loading_type == "modelscope":
     model_id = 'PommesPeter/IMelodist-chat-7b'
     mode_name_or_path = snapshot_download(model_id, revision='master')
