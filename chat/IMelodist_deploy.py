@@ -24,6 +24,7 @@ import warnings
 from dataclasses import asdict, dataclass
 from typing import Callable, List, Optional
 from music21 import converter
+from midi2audio import FluidSynth
 
 import streamlit as st
 import torch
@@ -293,12 +294,17 @@ def gen_wav(text):
         tmp_midi = f"{tmp_path}/{launch_time}/{abc_time}.mid"
         music_stream = converter.parse(abc_notation, format="abc")
         music_stream.write("midi", fp=tmp_midi)
+        
+        def midi2audio(midi_path, wav_path):
+            fs = FluidSynth('assets/default_sound_font.sf2')
+            fs.midi_to_audio(midi_path, wav_path)
 
-        # Convert xml to SVG and WAV using MuseScore (requires MuseScore installed)
+        # Convert xml to SVG and WAV using MuseScore (requires MuseScore installed), we use midi2audio
         svg_file = f"{tmp_path}/{launch_time}/{abc_time}.svg"
         wav_file = f"{tmp_path}/{launch_time}/{abc_time}.wav"
         # subprocess.run(["musescore", "-f", "-o", svg_file, tmp_midi])
-        subprocess.run(["midi2audio", tmp_midi, wav_file])
+        # subprocess.run(["midi2audio", tmp_midi, wav_file])
+        midi2audio(tmp_midi, wav_file)
         return svg_file, wav_file
     else:
         return None, None
