@@ -50,6 +50,25 @@ streamlit run chat/IMelodist_demo.py --server.address=0.0.0.0 --server.port 7860
 - 通用的 ABC 乐谱模板匹配
 - 支持 ABC 乐谱格式转换 (wav, midi, etc.)
 
+## News
+
+## Acknowledgement
+
++ [上海人工智能实验室](https://www.shlab.org.cn)
+  
++ [书生·浦语开源训练营](https://github.com/InternLM) 的技术指导以及算力支持
+
++ [sander-wood](https://huggingface.co/datasets/sander-wood) 和 [m-a-p](https://huggingface.co/m-a-p) 的开源数据集
+## Contributors
+
+<a href = "https://github.com/GuoYiFantastic/InternLM2-Beethoven/graphs/contributors">
+  <img src = "https://contrib.rocks/image?repo=GuoYiFantastic/InternLM2-Beethoven"/>
+</a>
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=GuoYiFantastic/IMelodist&type=Date)](https://star-history.com/#GuoYiFantastic/IMelodist&Date)
+
 ## BibTeX entry and citation info
 
 ```bibtex
@@ -85,19 +104,3 @@ streamlit run chat/IMelodist_demo.py --server.address=0.0.0.0 --server.port 7860
       archivePrefix={arXiv},
       primaryClass={cs.SD}
 ```
-## Acknowledgement
-
-+ [上海人工智能实验室](https://www.shlab.org.cn)
-  
-+ [书生·浦语开源训练营](https://github.com/InternLM) 的技术指导以及算力支持
-
-+ [sander-wood](https://huggingface.co/datasets/sander-wood) 和 [m-a-p](https://huggingface.co/m-a-p) 的开源数据集
-## Contributors
-
-<a href = "https://github.com/GuoYiFantastic/InternLM2-Beethoven/graphs/contributors">
-  <img src = "https://contrib.rocks/image?repo=GuoYiFantastic/InternLM2-Beethoven"/>
-</a>
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=GuoYiFantastic/IMelodist&type=Date)](https://star-history.com/#GuoYiFantastic/IMelodist&Date)
