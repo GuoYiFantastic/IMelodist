@@ -2,8 +2,6 @@
 
 IMelodist，即InternLM-Melodist，是基于internLM2-chat模型，利用开源框架xtuner微调打造的作曲家大模型。IMelodist不仅能够进行音乐话题的问答，还能像作曲家一样作曲。
 
-# <img src="~/assets/banner.png"/>
-
 - [IMelodist技术报告](#imelodist技术报告)
 - [](#)
   - [乐谱数据](#乐谱数据)
