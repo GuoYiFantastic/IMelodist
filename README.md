@@ -50,7 +50,8 @@ streamlit run chat/IMelodist_demo.py --server.address=0.0.0.0 --server.port 7860
 - 通用的 ABC 乐谱模板匹配
 - 支持 ABC 乐谱格式转换 (wav, midi, etc.)
 
-## News
+## Related resources
+- **[2024/3/17]** 书生·浦语 训练营 SIG小组 圆桌分享 [[视频](https://www.bilibili.com/video/BV1xr421n7MA/?vd_source=ed4c533bf4cce5e0d0329d8c60182037), [slide](https://github.com/GuoYiFantastic/IMelodist/blob/main/assets/TechnicalReport/IMelodist_0317%E5%9C%86%E6%A1%8C%E5%88%86%E4%BA%AB.pdf)]
 
 ## Acknowledgement
 
