@@ -209,6 +209,7 @@ def load_model():
         .to(torch.bfloat16)
         .cuda()
     )
+    model.eval()
     tokenizer = AutoTokenizer.from_pretrained(mode_name_or_path, trust_remote_code=True)
     return model, tokenizer
 
