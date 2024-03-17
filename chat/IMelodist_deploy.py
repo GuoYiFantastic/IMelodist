@@ -205,8 +205,7 @@ def on_btn_click():
 @st.cache_resource
 def load_model():
     model = (
-        AutoModelForCausalLM.from_pretrained(mode_name_or_path, trust_remote_code=True)
-        .to(torch.bfloat16)
+        AutoModelForCausalLM.from_pretrained(mode_name_or_path, trust_remote_code=True, torch_dtype=torch.bfloat16)
         .cuda()
     )
     model.eval()
