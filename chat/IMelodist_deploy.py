@@ -39,13 +39,13 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 loading_type = "modelscope"
 if loading_type == "modelscope":
     model_id = 'PommesPeter/IMelodist-chat-7b'
-    mode_name_or_path = snapshot_download(model_id, revision='master')
+    model_name_or_path = snapshot_download(model_id, revision='master')
 elif loading_type == "openxlab":
-    mode_name_or_path = "./IMelodist"
-    os.system(f"git clone https://code.openxlab.org.cn/EchoPeter/IMelodist.git {mode_name_or_path}")
-    os.system(f"cd {mode_name_or_path} && git lfs pull")
+    model_name_or_path = "./IMelodist"
+    os.system(f"git clone https://code.openxlab.org.cn/EchoPeter/IMelodist.git {model_name_or_path}")
+    os.system(f"cd {model_name_or_path} && git lfs pull")
 else:
-    mode_name_or_path = "PommesPeter/IMelodist"
+    model_name_or_path = "PommesPeter/IMelodist"
 
     
 logger = logging.get_logger(__name__)
@@ -205,11 +205,11 @@ def on_btn_click():
 @st.cache_resource
 def load_model():
     model = (
-        AutoModelForCausalLM.from_pretrained(mode_name_or_path, trust_remote_code=True, torch_dtype=torch.bfloat16)
+        AutoModelForCausalLM.from_pretrained(model_name_or_path, trust_remote_code=True, torch_dtype=torch.bfloat16)
         .cuda()
     )
     model.eval()
-    tokenizer = AutoTokenizer.from_pretrained(mode_name_or_path, trust_remote_code=True)
+    tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, trust_remote_code=True)
     return model, tokenizer
 
 
