@@ -59,7 +59,7 @@ streamlit run chat/IMelodist_demo.py --server.address=0.0.0.0 --server.port 7860
   
 + [书生·浦语开源训练营](https://github.com/InternLM) 的技术指导以及算力支持
 
-+ [sander-wood](https://huggingface.co/datasets/sander-wood) 和 [m-a-p](https://huggingface.co/m-a-p) 的开源数据集
++ [sander-wood](https://huggingface.co/datasets/sander-wood/irishman) 和 [m-a-p](https://huggingface.co/m-a-p) 的开源数据集
 ## Contributors
 
 <a href = "https://github.com/GuoYiFantastic/InternLM2-Beethoven/graphs/contributors">
