@@ -40,13 +40,13 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 loading_type = "modelscope"
 if loading_type == "modelscope":
     model_id = 'PommesPeter/IMelodist-chat-7b'
-    mode_name_or_path = snapshot_download(model_id, revision='master')
+    model_name_or_path = snapshot_download(model_id, revision='master')
 elif loading_type == "openxlab":
-    mode_name_or_path = "./IMelodist"
-    os.system(f"git clone https://code.openxlab.org.cn/EchoPeter/IMelodist.git {mode_name_or_path}")
-    os.system(f"cd {mode_name_or_path} && git lfs pull")
+    model_name_or_path = "./IMelodist"
+    os.system(f"git clone https://code.openxlab.org.cn/EchoPeter/IMelodist.git {model_name_or_path}")
+    os.system(f"cd {model_name_or_path} && git lfs pull")
 else:
-    mode_name_or_path = "PommesPeter/IMelodist"
+    model_name_or_path = "PommesPeter/IMelodist"
 
     
 logger = logging.get_logger(__name__)
@@ -206,11 +206,11 @@ def on_btn_click():
 @st.cache_resource
 def load_model():
     model = (
-        AutoModelForCausalLM.from_pretrained(mode_name_or_path, trust_remote_code=True, torch_dtype=torch.bfloat16)
+        AutoModelForCausalLM.from_pretrained(model_name_or_path, trust_remote_code=True, torch_dtype=torch.bfloat16)
         .cuda()
     )
     model.eval()
-    tokenizer = AutoTokenizer.from_pretrained(mode_name_or_path, trust_remote_code=True)
+    tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, trust_remote_code=True)
     return model, tokenizer
 
 
@@ -219,10 +219,11 @@ def prepare_generation_config():
         max_length = st.slider("Max Length", min_value=8, max_value=32768, value=32768)
         top_p = st.slider("Top P", 0.0, 1.0, 0.8, step=0.01)
         temperature = st.slider("Temperature", 0.0, 1.0, 0.7, step=0.01)
+        repetition_penalty = st.slider("Repetition Penalty", 1.0, 2.0, 1.02, step=0.01)
         st.button("Clear Chat History", on_click=on_btn_click)
 
     generation_config = GenerationConfig(
-        max_length=max_length, top_p=top_p, temperature=temperature
+        max_length=max_length, top_p=top_p, temperature=temperature, repetition_penalty=repetition_penalty
     )
 
     return generation_config
