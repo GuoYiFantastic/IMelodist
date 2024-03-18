@@ -12,8 +12,8 @@
 Melodist large model based on InternLM2-chat. 
 
 [📖Technical Report](assets/TechnicalReport/) |
-[🌐Video Demo](https://www.bilibili.com/video/BV13j421o7nZ/?spm_id_from=333.999.0.0&vd_source=ed4c533bf4cce5e0d0329d8c60182037)  
-
+[🌐Video Demo](https://www.bilibili.com/video/BV13j421o7nZ/?spm_id_from=333.999.0.0&vd_source=ed4c533bf4cce5e0d0329d8c60182037)  |
+[🎼IMelodist-app](https://openxlab.org.cn/apps/detail/EchoPeter/IMelodist-app)
 ## Basic Framework
 
 <img src="./assets/framework.png"/>
@@ -59,7 +59,7 @@ streamlit run chat/IMelodist_demo.py --server.address=0.0.0.0 --server.port 7860
   
 + [书生·浦语开源训练营](https://github.com/InternLM) 的技术指导以及算力支持
 
-+ [sander-wood](https://huggingface.co/datasets/sander-wood) 和 [m-a-p](https://huggingface.co/m-a-p) 的开源数据集
++ [sander-wood](https://huggingface.co/datasets/sander-wood/irishman) 和 [m-a-p](https://huggingface.co/m-a-p) 的开源数据集
 ## Contributors
 
 <a href = "https://github.com/GuoYiFantastic/InternLM2-Beethoven/graphs/contributors">
