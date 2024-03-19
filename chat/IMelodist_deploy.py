@@ -217,13 +217,13 @@ def load_model():
 def prepare_generation_config():
     with st.sidebar:
         max_length = st.slider("Max Length", min_value=8, max_value=32768, value=32768)
-        top_p = st.slider("Top P", 0.0, 1.0, 0.8, step=0.01)
-        temperature = st.slider("Temperature", 0.5, 2.0, 1.0, step=0.01)
-        repetition_penalty = st.slider("Repetition Penalty", 1.0, 2.0, 1.02, step=0.01)
+        # top_p = st.slider("Top P", 0.0, 1.0, 0.8, step=0.01)
+        # temperature = st.slider("Temperature", 0.5, 2.0, 1.0, step=0.01)
+        # repetition_penalty = st.slider("Repetition Penalty", 1.0, 1.2, 1.002, step=0.001)
         st.button("Clear Chat History", on_click=on_btn_click)
 
     generation_config = GenerationConfig(
-        max_length=max_length, top_p=top_p, temperature=temperature, repetition_penalty=repetition_penalty
+        max_length=max_length, top_p=0.8, temperature=0.7, repetition_penalty=1.002
     )
 
     return generation_config
