@@ -62,8 +62,8 @@ pip install openxlab
 
 ```python
 from openxlab.model import download
-download(model_repo='youngdon/AMchat', 
-        model_name='AMchat', output='./')
+download(model_repo='EchoPeter/IMelodist', 
+        model_name='IMelodist', output='./')
 ```
 
 - 从 Modelscope 下载
@@ -75,7 +75,7 @@ pip install modelscope
 
 ```python
 from modelscope.hub.snapshot_download import snapshot_download
-model_dir = snapshot_download('yondong/AMchat', cache_dir='./')
+model_dir = snapshot_download('PommesPeter/IMelodist-chat-7b', cache_dir='./')
 ```
 
 #### 运行 Web Demo
