@@ -153,6 +153,15 @@ streamlit run chat/IMelodist_demo.py --server.address=0.0.0.0 --server.port 7860
       primaryClass={cs.SD}
 ```
 
+```bibtex
+@misc{2024imelodist,
+      title={IMelodist: Music Large Language Model from Internlm2-7B finetuning}, 
+      author={IMelodist Contributor},
+      year={2024},
+      url={https://github.com/GuoYiFantastic/IMelodist}
+}
+```
+
 ## 🧾 开源许可证
 
 该项目采用 Apache License 2.0 开源许可证 同时，请遵守所使用的模型与数据集的许可证。
