@@ -14,11 +14,26 @@ Melodist large model based on InternLM2-chat.
 [📖Technical Report](assets/TechnicalReport/) |
 [🌐Video Demo](https://www.bilibili.com/video/BV13j421o7nZ/?spm_id_from=333.999.0.0&vd_source=ed4c533bf4cce5e0d0329d8c60182037)  |
 [🎼IMelodist-app](https://openxlab.org.cn/apps/detail/EchoPeter/IMelodist-app)
-## Basic Framework
+
+## 📝 Index
+
+- [🤖 Basic Framework](#-Basic-Framework)
+- [🚀 News](#-news)
+- [🛠️ How to start](#-How-to-start)
+  * [快速开始](#安装依赖)
+  * [重新训练](#下载模型)
+  * [运行 Web Demo](#-运行-Web-Demo)
+- [🌟 Future](#-Future)
+- [📄 Related resources](#-Related-resources)
+- [❤️ Acknowledgement](#-Acknowledgement)
+- [🖊️ BibTeX entry and citation info](#-BibTeX-entry-and-citation-info)
+- [🧾 开源许可证](#-开源许可证)
+
+## 🤖 Basic Framework
 
 <img src="./assets/framework.png"/>
 
-## How to start
+## 🛠️ How to start
 
 #### 安装依赖
 
@@ -29,12 +44,41 @@ pip install -r requirements.txt
 ```
 #### 下载模型
 
+提供了两种下载方式：
+
+- 从 OpenXLab 上下载
 ```shell
 git lfs install
 git clone https://code.openxlab.org.cn/EchoPeter/IMelodist.git
 ```
 
-#### 运行web_demo
+或者
+
+参考 [下载模型](https://openxlab.org.cn/docs/models/%E4%B8%8B%E8%BD%BD%E6%A8%A1%E5%9E%8B.html) 。
+
+```bash
+pip install openxlab
+```
+
+```python
+from openxlab.model import download
+download(model_repo='youngdon/AMchat', 
+        model_name='AMchat', output='./')
+```
+
+- 从 Modelscope 下载
+参考 [模型的下载](https://www.modelscope.cn/docs/%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%B8%8B%E8%BD%BD) 。
+
+```bash
+pip install modelscope
+```
+
+```python
+from modelscope.hub.snapshot_download import snapshot_download
+model_dir = snapshot_download('yondong/AMchat', cache_dir='./')
+```
+
+#### 运行 Web Demo
 
 将 [IMelodist_demo.py](https://github.com/GuoYiFantastic/IMelodist/blob/main/chat/IMelodist_demo.py) 文件中第42行的 `model_path` 改成本地 IMelodist **模型**所在路径后，运行以下指令。
 
@@ -43,23 +87,26 @@ git clone https://code.openxlab.org.cn/EchoPeter/IMelodist.git
 streamlit run chat/IMelodist_demo.py --server.address=0.0.0.0 --server.port 7860
 ```
 
-## Future
+## 🌟 Future
 
 - 扩展 Internlm2-7B 的能力，接入音乐生成功能
 - 更高质量的音乐知识、自我认知等数据
 - 通用的 ABC 乐谱模板匹配
 - 支持 ABC 乐谱格式转换 (wav, midi, etc.)
 
-## Related resources
+## 📄 Related resources
 - **[2024/3/17]** 书生·浦语 训练营 SIG小组 圆桌分享 [[视频](https://www.bilibili.com/video/BV1xr421n7MA/?vd_source=ed4c533bf4cce5e0d0329d8c60182037), [slide](https://github.com/GuoYiFantastic/IMelodist/blob/main/assets/TechnicalReport/IMelodist_0317%E5%9C%86%E6%A1%8C%E5%88%86%E4%BA%AB.pdf)]
 
-## Acknowledgement
+## ❤️ Acknowledgement
 
-+ [上海人工智能实验室](https://www.shlab.org.cn)
-  
-+ [书生·浦语开源训练营](https://github.com/InternLM) 的技术指导以及算力支持
+- 感谢 [**上海人工智能实验室**](https://www.shlab.org.cn) 举办的各项赛事和活动~
+- 感谢 [**书生·浦语开源实训营**](https://github.com/InternLM) 的技术指导以及算力支持~
+- 感谢 **OpenXLab** 对项目部署的算力支持~
+- 感谢 **浦语小助手** 对项目的支持~
+- 感谢 [**sander-wood**](https://huggingface.co/datasets/sander-wood/irishman) 和 [**m-a-p**](https://huggingface.co/m-a-p) 的开源数据集
+- [**InternLM-tutorial**](https://github.com/InternLM/tutorial)、[**InternStudio**](https://studio.intern-ai.org.cn/)、[**xtuner**](https://github.com/InternLM/xtuner)
+</div>
 
-+ [sander-wood](https://huggingface.co/datasets/sander-wood/irishman) 和 [m-a-p](https://huggingface.co/m-a-p) 的开源数据集
 ## Contributors
 
 <a href = "https://github.com/GuoYiFantastic/InternLM2-Beethoven/graphs/contributors">
@@ -105,3 +152,7 @@ streamlit run chat/IMelodist_demo.py --server.address=0.0.0.0 --server.port 7860
       archivePrefix={arXiv},
       primaryClass={cs.SD}
 ```
+
+## 🧾 开源许可证
+
+该项目采用 Apache License 2.0 开源许可证 同时，请遵守所使用的模型与数据集的许可证。
