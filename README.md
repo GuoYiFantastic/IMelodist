@@ -35,7 +35,7 @@ Melodist ABC-notation music model based on InternLM2-chat.
 
 
 
-## 🤖 基本架构
+## 🤖 模型架构
 
 <img src="./assets/framework.png"/>
 
