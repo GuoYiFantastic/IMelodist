@@ -1,4 +1,4 @@
-# 旋律大师-IMelodist
+# [旋律大师-IMelodist](#-快速体验)
 
 Melodist ABC-notation music model based on InternLM2-chat. 
 
