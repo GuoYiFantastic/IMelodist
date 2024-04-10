@@ -19,16 +19,16 @@ Melodist ABC-notation music model based on InternLM2-chat.
 ## 📝 Index
 
 - [🥰 快速体验](#-快速体验)
-- [🤖 Basic Framework](#-Basic-Framework)
-- [🚀 News](#-news)
-- [🛠️ How to start](#-How-to-start)
+- [🤖 模型架构](#-Basic-Framework)
+- [🚀 消息](#-news)
+- [🛠️ 本地体验](#-How-to-start)
   * [安装依赖](#安装依赖)
   * [下载模型](#下载模型)
   * [运行 Web Demo](#-运行-Web-Demo)
-- [🌟 Feature](#-Feature)
-- [📄 Related resources and news](#-Related-resources-and-news)
-- [❤️ Acknowledgement](#-Acknowledgement)
-- [🖊️ BibTeX entry and citation info](#-BibTeX-entry-and-citation-info)
+- [🌟 特征](#-Feature)
+- [📄 项目相关资源和消息](#-Related-resources-and-news)
+- [❤️ 致谢](#-Acknowledgement)
+- [🖊️ 引用](#-BibTeX-entry-and-citation-info)
 - [🧾 开源许可证](#-开源许可证)
 
 ## 🥰 快速体验
