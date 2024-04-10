@@ -1,28 +1,28 @@
 # IMelodist
 
+Melodist ABC-notation music model based on InternLM2-chat. 
+
 > _Music is a higher revelation than all wisdom and philosophy._ — Ludwig van Beethoven
+
+
+[📖Technical Report](assets/TechnicalReport/) |
+[🌐Video Demo](https://www.bilibili.com/video/BV13j421o7nZ/?spm_id_from=333.999.0.0&vd_source=ed4c533bf4cce5e0d0329d8c60182037)  |
+[🎼IMelodist-app](https://openxlab.org.cn/apps/detail/EchoPeter/IMelodist-app)
 
 [![Open in OpenXLab](https://cdn-static.openxlab.org.cn/header/openxlab_models.svg)](https://openxlab.org.cn/models/detail/EchoPeter/IMelodist)
 [![HF Model](https://img.shields.io/badge/Models-Models?style=flat&logoColor=%235c5c5c&label=%F0%9F%A4%97Huggingface&color=%23d9b125)]()
 [![HF Dataset Increment](https://img.shields.io/badge/Datasets(increment)-Datasets?style=flat&logoColor=%235c5c5c&label=%F0%9F%A4%97Huggingface&color=%23d9b125)](https://huggingface.co/datasets/PommesPeter/imelodist-increment)
 [![HF Dataset SFT](https://img.shields.io/badge/Datasets(sft)-Datasets?style=flat&logoColor=%235c5c5c&label=%F0%9F%A4%97Huggingface&color=%23d9b125)](https://huggingface.co/datasets/PommesPeter/imelodist-sft)
-  <a href="[https://www.bilibili.com/video/BV1S2421N7mn](https://www.bilibili.com/video/BV13j421o7nZ/?spm_id_from=333.999.0.0&vd_source=ed4c533bf4cce5e0d0329d8c60182037)" target="_blank"><img alt="BiliBili" src="https://img.shields.io/badge/BiliBili-pink?logo=bilibili&logoColor=white" />
 
 <img src="./assets/banner.png"/>
-
-Melodist large model based on InternLM2-chat. 
-
-[📖Technical Report](assets/TechnicalReport/) |
-[🌐Video Demo](https://www.bilibili.com/video/BV13j421o7nZ/?spm_id_from=333.999.0.0&vd_source=ed4c533bf4cce5e0d0329d8c60182037)  |
-[🎼IMelodist-app](https://openxlab.org.cn/apps/detail/EchoPeter/IMelodist-app)
 
 ## 📝 Index
 
 - [🤖 Basic Framework](#-Basic-Framework)
 - [🚀 News](#-news)
 - [🛠️ How to start](#-How-to-start)
-  * [快速开始](#安装依赖)
-  * [重新训练](#下载模型)
+  * [安装依赖](#安装依赖)
+  * [下载模型](#下载模型)
   * [运行 Web Demo](#-运行-Web-Demo)
 - [🌟 Feature](#-Feature)
 - [📄 Related resources and news](#-Related-resources-and-news)
