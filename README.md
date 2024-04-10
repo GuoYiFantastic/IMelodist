@@ -1,4 +1,4 @@
-# IMelodist
+# 旋律大师-IMelodist
 
 Melodist ABC-notation music model based on InternLM2-chat. 
 
@@ -16,7 +16,7 @@ Melodist ABC-notation music model based on InternLM2-chat.
 
 <img src="./assets/banner.png"/>
 
-## 📝 Index
+## 📝 目录
 
 - [🥰 快速体验](#-快速体验)
 - [🤖 模型架构](#-模型架构)
@@ -24,8 +24,8 @@ Melodist ABC-notation music model based on InternLM2-chat.
   * [安装依赖](#安装依赖)
   * [下载模型](#下载模型)
   * [运行 Web Demo](#-运行-Web-Demo)
-- [📄 项目相关资源和消息](#-Related-resources-and-news)
-- [❤️ 致谢](#-Acknowledgement)
+- [📄 项目相关资源和消息](#-项目相关资源和消息)
+- [❤️ 致谢](#-致谢)
 - [🖊️ 引用](#-BibTeX-entry-and-citation-info)
 - [🧾 开源许可证](#-开源许可证)
 
@@ -93,12 +93,12 @@ model_dir = snapshot_download('PommesPeter/IMelodist-chat-7b', cache_dir='./')
 streamlit run chat/IMelodist_demo.py --server.address=0.0.0.0 --server.port 7860
 ```
 
-## 📄 Related resources and news
+## 📄 项目相关资源和消息
 - **[2024/3]** 2024浦源大模型系列挑战赛(春季赛)|创新创意奖 [GDC2024](https://mp.weixin.qq.com/s/RkYYSGpDVznRhDjC0KQnzQ)
 - **[2024/3]** 推送分享 [InternLM](),[机智流](https://mp.weixin.qq.com/s/_wm04eYxzh-05czEb5ZggA)
 - **[2024/3/17]** 书生·浦语 训练营 SIG小组 圆桌分享 [[视频](https://www.bilibili.com/video/BV1xr421n7MA/?vd_source=ed4c533bf4cce5e0d0329d8c60182037), [slide](https://github.com/GuoYiFantastic/IMelodist/blob/main/assets/TechnicalReport/IMelodist_0317%E5%9C%86%E6%A1%8C%E5%88%86%E4%BA%AB.pdf)]
 
-## ❤️ Acknowledgement
+## ❤️ 致谢
 
 - 感谢 [**上海人工智能实验室**](https://www.shlab.org.cn) 举办的各项赛事和活动~
 - 感谢 [**书生·浦语开源实训营**](https://github.com/InternLM) 的技术指导以及算力支持~
@@ -108,13 +108,13 @@ streamlit run chat/IMelodist_demo.py --server.address=0.0.0.0 --server.port 7860
 - [**InternLM-tutorial**](https://github.com/InternLM/tutorial)、[**InternStudio**](https://studio.intern-ai.org.cn/)、[**xtuner**](https://github.com/InternLM/xtuner)
 </div>
 
-## Contributors
+## 贡献者
 
 <a href = "https://github.com/GuoYiFantastic/InternLM2-Beethoven/graphs/contributors">
   <img src = "https://contrib.rocks/image?repo=GuoYiFantastic/InternLM2-Beethoven"/>
 </a>
 
-## Star History
+## 星矢😆
 
 [![Star History Chart](https://api.star-history.com/svg?repos=GuoYiFantastic/IMelodist&type=Date)](https://star-history.com/#GuoYiFantastic/IMelodist&Date)
 
