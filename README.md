@@ -19,12 +19,11 @@ Melodist ABC-notation music model based on InternLM2-chat.
 ## 📝 Index
 
 - [🥰 快速体验](#-快速体验)
-- [🤖 模型架构](#-Basic-Framework)
-- [🛠️ 本地体验](#-How-to-start)
+- [🤖 模型架构](#-模型架构)
+- [🛠️ 本地运行](#-本地运行)
   * [安装依赖](#安装依赖)
   * [下载模型](#下载模型)
   * [运行 Web Demo](#-运行-Web-Demo)
-- [🌟 特征](#-Feature)
 - [📄 项目相关资源和消息](#-Related-resources-and-news)
 - [❤️ 致谢](#-Acknowledgement)
 - [🖊️ 引用](#-BibTeX-entry-and-citation-info)
@@ -36,11 +35,11 @@ Melodist ABC-notation music model based on InternLM2-chat.
 
 
 
-## 🤖 Basic Framework
+## 🤖 基本架构
 
 <img src="./assets/framework.png"/>
 
-## 🛠️ How to start
+## 🛠️ 本地运行
 
 #### 安装依赖
 
@@ -93,13 +92,6 @@ model_dir = snapshot_download('PommesPeter/IMelodist-chat-7b', cache_dir='./')
 # 确保terminal所在位置为repo主目录
 streamlit run chat/IMelodist_demo.py --server.address=0.0.0.0 --server.port 7860
 ```
-
-## 🌟 Feature
-
-- 扩展 Internlm2-7B 的能力，接入音乐生成功能
-- 更高质量的音乐知识、自我认知等数据
-- 通用的 ABC 乐谱模板匹配
-- 支持 ABC 乐谱格式转换 (wav, midi, etc.)
 
 ## 📄 Related resources and news
 - **[2024/3]** 2024浦源大模型系列挑战赛(春季赛)|创新创意奖 [GDC2024](https://mp.weixin.qq.com/s/RkYYSGpDVznRhDjC0KQnzQ)
