@@ -18,6 +18,7 @@ Melodist ABC-notation music model based on InternLM2-chat.
 
 ## 📝 Index
 
+- [🥰 快速体验](#-快速体验)
 - [🤖 Basic Framework](#-Basic-Framework)
 - [🚀 News](#-news)
 - [🛠️ How to start](#-How-to-start)
@@ -29,6 +30,12 @@ Melodist ABC-notation music model based on InternLM2-chat.
 - [❤️ Acknowledgement](#-Acknowledgement)
 - [🖊️ BibTeX entry and citation info](#-BibTeX-entry-and-citation-info)
 - [🧾 开源许可证](#-开源许可证)
+
+## 🥰 快速体验
+已部署在[openXLab](https://openxlab.org.cn/apps/detail/EchoPeter/IMelodist-app)上啦，若应用休眠，请点击`重新启动`后耐心等待。
+![image](https://github.com/GuoYiFantastic/IMelodist/assets/130634988/3b6a6b25-a640-487d-ba76-c56e710562b5)
+
+
 
 ## 🤖 Basic Framework
 
