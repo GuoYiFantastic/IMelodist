@@ -21,9 +21,9 @@ Melodist ABC-notation music model based on InternLM2-chat.
 - [🥰 快速体验](#-快速体验)
 - [🤖 模型架构](#-模型架构)
 - [🛠️ 本地运行](#-本地运行)
-  * [安装依赖](#安装依赖)
-  * [下载模型](#下载模型)
-  * [运行 Web Demo](#-运行-Web-Demo)
+  * [安装依赖](#-安装依赖)
+  * [下载模型](#-下载模型)
+  * [运行 Web Demo](####-运行-Web-Demo)
 - [📄 项目相关资源和消息](#-项目相关资源和消息)
 - [❤️ 致谢](#-致谢)
 - [🖊️ 引用](#-BibTeX-entry-and-citation-info)
@@ -39,7 +39,7 @@ Melodist ABC-notation music model based on InternLM2-chat.
 
 <img src="./assets/framework.png"/>
 
-## 🛠️ 本地运行
+## 本地运行
 
 #### 安装依赖
 
