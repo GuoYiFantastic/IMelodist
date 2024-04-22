@@ -24,8 +24,7 @@ Stage 2: Embedding layer fusion
 '''
 # print("Start of embedding layer fusion")
 # # Load tokenizer and models
-internlm2 = AutoModel.from_pretrained(internlm2_path, trust_remote_code=True)
-pass
+# internlm2 = AutoModel.from_pretrained(internlm2_path, trust_remote_code=True)
 # anygpt = AutoModel.from_pretrained("fnlp/AnyGPT-base")
 # tokenizer = AutoTokenizer.from_pretrained('./imelodist-1_5', trust_remote_code=True)
 # vocab_size = tokenizer.vocab_size
@@ -52,7 +51,7 @@ pass
 '''
 Stage 3: Test
 '''
-config = AutoConfig.from_pretrained('imelodist-1_5',trust_remote_code=True)
-imelodist = AutoModel.from_config(config, trust_remote_code=True)
-imelodist.eval()
-print(imelodist.output.weight.shape)
+# config = AutoConfig.from_pretrained('imelodist-1_5',trust_remote_code=True)
+# imelodist = AutoModel.from_config(config, trust_remote_code=True)
+# imelodist.eval()
+# print(imelodist.output.weight.shape)

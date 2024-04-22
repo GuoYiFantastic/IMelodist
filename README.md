@@ -1,168 +1,113 @@
-# [旋律大师-IMelodist](#-快速体验)
+---
+inference: false
+---
 
-Melodist ABC-notation music model based on InternLM2-chat. 
+![encodec image](https://github.com/facebookresearch/encodec/raw/2d29d9353c2ff0ab1aeadc6a3d439854ee77da3e/architecture.png)
 
-> _Music is a higher revelation than all wisdom and philosophy._ — Ludwig van Beethoven
+# Model Card for EnCodec
 
+This model card provides details and information about EnCodec 32kHz, a state-of-the-art real-time audio codec developed by Meta AI. 
+This EnCodec checkpoint was trained specifically as part of the [MusicGen project](https://huggingface.co/docs/transformers/main/model_doc/musicgen),
+and is intended to be used in conjuction with the MusicGen models.
 
-[📖Technical Report](assets/TechnicalReport/) |
-[🌐Video Demo](https://www.bilibili.com/video/BV13j421o7nZ/?spm_id_from=333.999.0.0&vd_source=ed4c533bf4cce5e0d0329d8c60182037)  |
-[🎼IMelodist-app](https://openxlab.org.cn/apps/detail/EchoPeter/IMelodist-app)
+## Model Details
 
-[![Open in OpenXLab](https://cdn-static.openxlab.org.cn/header/openxlab_models.svg)](https://openxlab.org.cn/models/detail/EchoPeter/IMelodist)
-[![HF Model](https://img.shields.io/badge/Models-Models?style=flat&logoColor=%235c5c5c&label=%F0%9F%A4%97Huggingface&color=%23d9b125)]()
-[![HF Dataset Increment](https://img.shields.io/badge/Datasets(increment)-Datasets?style=flat&logoColor=%235c5c5c&label=%F0%9F%A4%97Huggingface&color=%23d9b125)](https://huggingface.co/datasets/PommesPeter/imelodist-increment)
-[![HF Dataset SFT](https://img.shields.io/badge/Datasets(sft)-Datasets?style=flat&logoColor=%235c5c5c&label=%F0%9F%A4%97Huggingface&color=%23d9b125)](https://huggingface.co/datasets/PommesPeter/imelodist-sft)
+### Model Description
 
-<img src="./assets/banner.png"/>
+EnCodec is a high-fidelity audio codec leveraging neural networks. It introduces a streaming encoder-decoder architecture with quantized latent space, trained in an end-to-end fashion. 
+The model simplifies and speeds up training using a single multiscale spectrogram adversary that efficiently reduces artifacts and produces high-quality samples. 
+It also includes a novel loss balancer mechanism that stabilizes training by decoupling the choice of hyperparameters from the typical scale of the loss. 
+Additionally, lightweight Transformer models are used to further compress the obtained representation while maintaining real-time performance. This variant of EnCodec is 
+trained on 20k of music data, consisting of an internal dataset of 10K high-quality music tracks, and on the ShutterStock and Pond5 music datasets.
 
-## 📝 目录
+- **Developed by:** Meta AI
+- **Model type:** Audio Codec
 
-- [🥰 快速体验](#-快速体验)
-- [🤖 模型架构](#-模型架构)
-- [🛠️ 本地运行](#-本地运行)
-  * [安装依赖](#-安装依赖)
-  * [下载模型](#-下载模型)
-  * [运行 Web Demo](####-运行-Web-Demo)
-- [📄 项目相关资源和消息](#-项目相关资源和消息)
-- [❤️ 致谢](#-致谢)
-- [🖊️ 引用](#-BibTeX-entry-and-citation-info)
-- [🧾 开源许可证](#-开源许可证)
+### Model Sources
 
-## 🥰 快速体验
-已部署在[openXLab](https://openxlab.org.cn/apps/detail/EchoPeter/IMelodist-app)上啦，若应用休眠，请点击`重新启动`后耐心等待。
-![image](https://github.com/GuoYiFantastic/IMelodist/assets/130634988/3b6a6b25-a640-487d-ba76-c56e710562b5)
+- **Repository:** [GitHub Repository](https://github.com/facebookresearch/audiocraft)
+- **Paper:** [Simple and Controllable Music Generation](https://arxiv.org/abs/2306.05284)
 
+## Uses
+<!-- Address questions around how the model is intended to be used, including the foreseeable users of the model and those affected by the model. -->
 
+### Direct Use
 
-## 🤖 模型架构
+EnCodec can be used directly as an audio codec for real-time compression and decompression of audio signals. 
+It provides high-quality audio compression and efficient decoding. The model was trained on various bandwiths, which can be specified when encoding (compressing) and decoding (decompressing).
+Two different setup exist for EnCodec: 
 
-<img src="./assets/framework.png"/>
+- Non-streamable: the input audio is split into chunks of 1 seconds, with an overlap of 10 ms, which are then encoded.
+- Streamable: weight normalizationis used on the convolution layers, and the input is not split into chunks but rather padded on the left.
 
-## 本地运行
+### Downstream Use
 
-#### 安装依赖
+This variant of EnCodec is designed to be used in conjunction with the official [MusicGen checkpoints](https://huggingface.co/models?search=facebook/musicgen-).
+However, it can also be used standalone to encode audio files.
 
-```shell
-# 此处我们使用的环境是 Ubuntu 20.04, 其他系统自行寻找相应的库安装
-sudo xargs -r -a packages.txt apt-get install -y
-pip install -r requirements.txt
+## How to Get Started with the Model
+
+Use the following code to get started with the EnCodec model using a dummy example from the LibriSpeech dataset (~9MB). First, install the required Python packages:
+
 ```
-#### 下载模型
-
-提供了两种下载方式：
-
-- 从 OpenXLab 上下载
-```shell
-git lfs install
-git clone https://code.openxlab.org.cn/EchoPeter/IMelodist.git
+pip install --upgrade pip
+pip install --upgrade transformers datasets[audio] 
 ```
 
-或者
-
-参考 [下载模型](https://openxlab.org.cn/docs/models/%E4%B8%8B%E8%BD%BD%E6%A8%A1%E5%9E%8B.html) 。
-
-```bash
-pip install openxlab
-```
+Then load an audio sample, and run a forward pass of the model:
 
 ```python
-from openxlab.model import download
-download(model_repo='EchoPeter/IMelodist', 
-        model_name='IMelodist', output='./')
+from datasets import load_dataset, Audio
+from transformers import EncodecModel, AutoProcessor
+
+
+# load a demonstration datasets
+librispeech_dummy = load_dataset("hf-internal-testing/librispeech_asr_dummy", "clean", split="validation")
+
+# load the model + processor (for pre-processing the audio)
+model = EncodecModel.from_pretrained("facebook/encodec_48khz")
+processor = AutoProcessor.from_pretrained("facebook/encodec_48khz")
+
+# cast the audio data to the correct sampling rate for the model
+librispeech_dummy = librispeech_dummy.cast_column("audio", Audio(sampling_rate=processor.sampling_rate))
+audio_sample = librispeech_dummy[0]["audio"]["array"]
+
+# pre-process the inputs
+inputs = processor(raw_audio=audio_sample, sampling_rate=processor.sampling_rate, return_tensors="pt")
+
+# explicitly encode then decode the audio inputs
+encoder_outputs = model.encode(inputs["input_values"], inputs["padding_mask"])
+audio_values = model.decode(encoder_outputs.audio_codes, encoder_outputs.audio_scales, inputs["padding_mask"])[0]
+
+# or the equivalent with a forward pass
+audio_values = model(inputs["input_values"], inputs["padding_mask"]).audio_values
 ```
 
-- 从 Modelscope 下载
-参考 [模型的下载](https://www.modelscope.cn/docs/%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%B8%8B%E8%BD%BD) 。
+## Evaluation
 
-```bash
-pip install modelscope
+For evaluation results, refer to the [MusicGen evaluation scores](https://huggingface.co/facebook/musicgen-large#evaluation-results).
+
+## Summary
+
+EnCodec is a state-of-the-art real-time neural audio compression model that excels in producing high-fidelity audio samples at various sample rates and bandwidths. 
+The model's performance was evaluated across different settings, ranging from 24kHz monophonic at 1.5 kbps to 48kHz stereophonic, showcasing both subjective and 
+objective results. Notably, EnCodec incorporates a novel spectrogram-only adversarial loss, effectively reducing artifacts and enhancing sample quality. 
+Training stability and interpretability were further enhanced through the introduction of a gradient balancer for the loss weights. 
+Additionally, the study demonstrated that a compact Transformer model can be employed to achieve an additional bandwidth reduction of up to 40% without compromising 
+quality, particularly in applications where low latency is not critical (e.g., music streaming).
+
+
+## Citation
+
+**BibTeX:**
+
 ```
-
-```python
-from modelscope.hub.snapshot_download import snapshot_download
-model_dir = snapshot_download('PommesPeter/IMelodist-chat-7b', cache_dir='./')
-```
-
-#### 运行 Web Demo
-
-将 [IMelodist_demo.py](https://github.com/GuoYiFantastic/IMelodist/blob/main/chat/IMelodist_demo.py) 文件中第42行的 `model_path` 改成本地 IMelodist **模型**所在路径后，运行以下指令。
-
-```shell
-# 确保terminal所在位置为repo主目录
-streamlit run chat/IMelodist_demo.py --server.address=0.0.0.0 --server.port 7860
-```
-
-## 📄 项目相关资源和消息
-- **[2024/3]** 2024浦源大模型系列挑战赛(春季赛)|创新创意奖 [GDC2024](https://mp.weixin.qq.com/s/RkYYSGpDVznRhDjC0KQnzQ)
-- **[2024/3]** 推送分享 [InternLM](),[机智流](https://mp.weixin.qq.com/s/_wm04eYxzh-05czEb5ZggA)
-- **[2024/3/17]** 书生·浦语 训练营 SIG小组 圆桌分享 [[视频](https://www.bilibili.com/video/BV1xr421n7MA/?vd_source=ed4c533bf4cce5e0d0329d8c60182037), [slide](https://github.com/GuoYiFantastic/IMelodist/blob/main/assets/TechnicalReport/IMelodist_0317%E5%9C%86%E6%A1%8C%E5%88%86%E4%BA%AB.pdf)]
-
-## ❤️ 致谢
-
-- 感谢 [**上海人工智能实验室**](https://www.shlab.org.cn) 举办的各项赛事和活动~
-- 感谢 [**书生·浦语开源实训营**](https://github.com/InternLM) 的技术指导以及算力支持~
-- 感谢 **OpenXLab** 对项目部署的算力支持~
-- 感谢 **浦语小助手** 对项目的支持~
-- 感谢 [**sander-wood**](https://huggingface.co/datasets/sander-wood/irishman) 和 [**m-a-p**](https://huggingface.co/m-a-p) 的开源数据集
-- [**InternLM-tutorial**](https://github.com/InternLM/tutorial)、[**InternStudio**](https://studio.intern-ai.org.cn/)、[**xtuner**](https://github.com/InternLM/xtuner)
-</div>
-
-## 贡献者
-
-<a href = "https://github.com/GuoYiFantastic/InternLM2-Beethoven/graphs/contributors">
-  <img src = "https://contrib.rocks/image?repo=GuoYiFantastic/InternLM2-Beethoven"/>
-</a>
-
-## 星矢😆
-
-[![Star History Chart](https://api.star-history.com/svg?repos=GuoYiFantastic/IMelodist&type=Date)](https://star-history.com/#GuoYiFantastic/IMelodist&Date)
-
-## BibTeX entry and citation info
-
-```bibtex
-@inproceedings{DBLP:conf/hcmir/WuLY023,
-  author       = {Shangda Wu and
-                  Xiaobing Li and
-                  Feng Yu and
-                  Maosong Sun},
-  editor       = {Lorenzo Porcaro and
-                  Roser Batlle{-}Roca and
-                  Emilia G{\'{o}}mez},
-  title        = {TunesFormer: Forming Irish Tunes with Control Codes by Bar Patching},
-  booktitle    = {Proceedings of the 2nd Workshop on Human-Centric Music Information
-                  Retrieval 2023 co-located with the 24th International Society for
-                  Music Information Retrieval Conference {(ISMIR} 2023), Milan, Italy,
-                  November 10, 2023},
-  series       = {{CEUR} Workshop Proceedings},
-  volume       = {3528},
-  publisher    = {CEUR-WS.org},
-  year         = {2023},
-  url          = {https://ceur-ws.org/Vol-3528/paper1.pdf},
-  timestamp    = {Tue, 19 Dec 2023 17:15:12 +0100},
-  biburl       = {https://dblp.org/rec/conf/hcmir/WuLY023.bib},
-  bibsource    = {dblp computer science bibliography, https://dblp.org}
-}
-```
-```bibtex
-@misc{yuan2024chatmusician,
-      title={ChatMusician: Understanding and Generating Music Intrinsically with LLM}, 
-      author={Ruibin Yuan and Hanfeng Lin and Yi Wang and Zeyue Tian and Shangda Wu and Tianhao Shen and Ge Zhang and Yuhang Wu and Cong Liu and Ziya Zhou and Ziyang Ma and Liumeng Xue and Ziyu Wang and Qin Liu and Tianyu Zheng and Yizhi Li and Yinghao Ma and Yiming Liang and Xiaowei Chi and Ruibo Liu and Zili Wang and Pengfei Li and Jingcheng Wu and Chenghua Lin and Qifeng Liu and Tao Jiang and Wenhao Huang and Wenhu Chen and Emmanouil Benetos and Jie Fu and Gus Xia and Roger Dannenberg and Wei Xue and Shiyin Kang and Yike Guo},
-      year={2024},
-      eprint={2402.16153},
+@misc{copet2023simple,
+      title={Simple and Controllable Music Generation}, 
+      author={Jade Copet and Felix Kreuk and Itai Gat and Tal Remez and David Kant and Gabriel Synnaeve and Yossi Adi and Alexandre Défossez},
+      year={2023},
+      eprint={2306.05284},
       archivePrefix={arXiv},
       primaryClass={cs.SD}
-```
-
-```bibtex
-@misc{2024imelodist,
-      title={IMelodist: Music Large Language Model from Internlm2-7B finetuning}, 
-      author={IMelodist Contributor},
-      year={2024},
-      url={https://github.com/GuoYiFantastic/IMelodist}
 }
 ```
-
-## 🧾 开源许可证
-
-该项目采用 Apache License 2.0 开源许可证 同时，请遵守所使用的模型与数据集的许可证。

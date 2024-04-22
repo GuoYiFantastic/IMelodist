@@ -18,9 +18,15 @@
         "output":"下面是G属七和弦：<somu>tokenize后的音频<eomu>，其ABC表示方式是..." 
     },
     {
-        "stage": "SFT-ABC纠错",
+        "stage": "SFT-ABC纠错-w music",
         "system": "(待定)",
         "input": "乐曲:<somu>tokenize后的音频<eomu>, 错误的ABC表示：...",
+        "output":"正确的ABC表示：..." 
+    },
+    {
+        "stage": "SFT-ABC纠错-w/o music",
+        "system": "(待定)",
+        "input": "错误的ABC表示：...",
         "output":"正确的ABC表示：..." 
     },
     {
