@@ -1,1 +1,4 @@
 chat/tmp/*
+comparison-test
+*.drawio
+__pycache__
