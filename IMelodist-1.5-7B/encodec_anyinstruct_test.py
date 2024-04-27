@@ -8,7 +8,7 @@ encodec_path = f'{home}/models/encodec_32khz'
 dataset_path = f'{home}/IMelodist-1.5/IMelodist-1.5-7B/any_instruct_sample'
 output_path = f'{home}/IMelodist-1.5/IMelodist-1.5-7B/any_instruct_encodec_sample'
 # load the model + processor (for pre-processing the audio)
-model = EncodecModel.from_pretrained(encodec_path)
+model = EncodecModel.from_pretrained(encodec_path).cuda()
 processor = AutoProcessor.from_pretrained(encodec_path)
 
 # cast the audio data to the correct sampling rate for the model
@@ -26,17 +26,17 @@ for path, d in zip(audio_path, dataset):
     start_enc = time.time()
     inputs = processor(raw_audio=audio_data, sampling_rate=sr, return_tensors="pt")
     # explicitly encode then decode the audio inputs
-    codes, scales = model.encode(inputs["input_values"],inputs['padding_mask'], return_dict=False)
+    codes, scales = model.encode(inputs["input_values"].cuda(),inputs['padding_mask'].cuda(), return_dict=False)
     # codes_copy = codes.clone().detach() # need to de-comment when using encodec_to_anygpt_vec
-    print(encodec_to_anygpt(codes))
+    # print(encodec_to_anygpt(codes))
     end_enc = time.time()
     tot_enc_time += (end_enc - start_enc)
     
     # decode
     start_dec = time.time()
     # audio_values = model.decode(codes_copy, scales)[0] # need to de-comment when using encodec_to_anygpt_vec
-    audio_values = model.decode(codes, scales)[0]
-    save_wav(audio_values[0, 0].detach().numpy(), f'{output_path}/decode_{path.split("/")[-1]}', sr)
+    audio_values = model.decode(codes.cuda(), scales)[0]
+    save_wav(audio_values[0, 0].cpu().detach().numpy(), f'{output_path}/decode_{path.split("/")[-1]}', sr)
     end_dec = time.time()
     tot_dec_time += (end_dec - start_dec)
 print(f'Average encode time: {tot_enc_time / len(audio_path)}s')

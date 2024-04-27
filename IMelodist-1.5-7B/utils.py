@@ -26,7 +26,7 @@ def encodec_to_anygpt(codes: torch.Tensor) -> str:
     return start + ''.join(music_tokens) + end
 
 
-def encodec_to_anygpt_vec(codes:torch.Tensor) -> str:
+def encodec_to_anygpt_vec(codes:torch.Tensor, to_cuda=False) -> str:
     """
     
     Args:
@@ -45,6 +45,8 @@ def encodec_to_anygpt_vec(codes:torch.Tensor) -> str:
     
     # a vectorized version
     offset = torch.LongTensor([[0],[2048],[4096],[6144]]).reshape(-1,1)
+    if to_cuda:
+        offset = offset.cuda()
     encodec_quantized_token += offset
     encodec_quantized_token = encodec_quantized_token.T.reshape(-1)
     music_tokens = list(map(lambda elem: f'<{prefix}{elem.item()}>', encodec_quantized_token))
