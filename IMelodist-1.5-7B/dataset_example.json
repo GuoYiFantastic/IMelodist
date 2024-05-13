@@ -1,39 +1,11 @@
 [
     {
-        "stage": "pretrain",
-        "system": "",
-        "input": "",
-        "output":"<somu>tokenize后的音频<eomu>" 
-    },
-    {
-        "stage": "pretrain",
-        "system": "",
-        "input": "",
-        "output":"ABC乐谱(一定要保证格式正确)" 
-    },
-    {
-        "stage": "SFT-音乐基础（可以将举例时的音频和ABC同时加入）",
-        "system": "(待定)",
-        "input": "（待定）",
-        "output":"下面是G属七和弦：<somu>tokenize后的音频<eomu>，其ABC表示方式是..." 
-    },
-    {
-        "stage": "SFT-ABC纠错",
-        "system": "(待定)",
-        "input": "乐曲:<somu>tokenize后的音频<eomu>, 错误的ABC表示：...",
-        "output":"正确的ABC表示：..." 
-    },
-    {
-        "stage": "SFT-根据乐谱生成ABC",
-        "system": "(待定)",
-        "input": "乐曲:<somu>tokenize后的音频<eomu>",
-        "output":"其ABC表示为:..." 
-    },
-    {
-        "stage": "SFT-ABC创作",
-        "system": "(待定)",
-        "input": "为我创作一首升c小调的乐曲，以ABC格式输出",
-        "output":"ABC乐谱" 
+        "conversation":[
+            {
+                "system":"",
+                "input": "",
+                "output":""
+            }
+        ]
     }
-
 ]
