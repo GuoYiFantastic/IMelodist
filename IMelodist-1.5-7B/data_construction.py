@@ -36,6 +36,83 @@ L:1/4
 K:C
 [|{music}|]
 """
+# the distance(in semitone) between each note and root of every common chord
+# Reference: https://www.bilibili.com/video/BV1Xa41117Wy/?vd_source=96a5e3c8d3ee54a5b89d246a66d277e3 
+chord_dict = {
+    'maj': [4, 7],
+    'min': [3, 7],
+    'dim': [3, 6],
+    'add6': [4, 7, 9],
+    'madd6': [3, 7, 9],
+    'aug': [4, 8],
+    'maj7': [4, 7, 11],
+    'min7': [3, 7, 10],
+    '7':[4, 7, 10],
+    'maj9':[4, 7, 11, 14],
+    'min9': [3, 7, 10, 14],
+    '9': [4, 7, 10, 14],
+    'maj11': [4, 7, 11, 14, 17],
+    'min11': [3, 7, 10, 14, 17],
+    '11': [4, 7, 10, 14, 17],
+    'maj13': [4, 7, 11, 14, 17, 21],
+    'min13': [3, 7, 10, 14, 17, 21],
+    '13': [4, 7, 10, 14, 17, 21],
+    'sus2': [2, 7],
+    'sus4': [5, 7],
+    'dim7': [3, 6, 9],
+    'augmaj7': [4, 8, 11],
+    'add4': [4, 5, 7],
+    'madd11': [3, 5, 7],
+    '7add4': [4, 5, 7, 10],
+    'add9': [2, 4, 7],
+    'madd9': [2, 3, 7],
+    'mM7': [3, 7, 11],
+    'mM9': [3, 7, 11, 14],
+    'mM11': [3, 7, 11, 14, 17],
+    '7sus2': [2, 7, 10],
+    '7sus4': [5, 7, 10],
+    '9sus4': [5, 7, 10, 14],
+    'dimadd4': [3, 5, 6],
+    'augadd2': [2, 4, 8],
+    'M7sus4': [5, 7, 11],
+    'm7add4': [3, 5, 7, 10],
+    '6/9': [4, 7, 9, 14],
+    '7/6': [4, 7, 9, 11],
+    '9/6': [4, 7, 9, 11, 14],
+    'M(b5)': [4, 6],
+    'm(#5)': [3, 8],
+    'M7(b5)': [4, 6, 11],
+    'm7(b5)': [3, 6, 11],
+    '7(b5)': [4, 6, 10],
+    'm6/9': [3, 7, 9, 14],
+    'm7(#5)': [3, 8, 11],
+    '7(#5)': [4, 8, 10],
+    'M7(b9)': [4, 7, 11, 13],
+    'm7(b9)': [3, 7, 10, 13],
+    '7(b9)': [4, 7, 10, 13],
+    'M(#9)': [3, 4, 7],
+    'M7(#9)': [4, 7, 11, 15],
+    'm7(#9)': [3, 7, 10, 15],
+    '7(#9)': [4, 7, 10, 15],
+    'M7(#11)': [4, 7, 11, 14, 18],
+    'm7(#11)': [3, 7, 10, 14, 18],
+    '7(#11)': [4, 7, 10, 14, 18],
+    'M(b9)': [1, 4, 7],
+    'M(#11)': [4, 6, 7],
+    'm11(b5)': [3, 6, 10, 14, 17],
+    '9(b5)': [4, 6, 10, 14],
+    '9(#5)': [4, 8, 10, 14],
+    'M9(#5)': [4, 8, 11, 14],
+    '11(b9)': [4, 7, 10, 13, 17],
+    'aug7(#9)':[4, 8, 10, 15],
+    'aug7': [4, 8, 10],
+    '13(b9)': [4, 7, 10, 13, 17, 21],
+    '13(#11)': [4, 7, 10, 14, 18, 21],
+    'M(b9b5)': [4, 6, 11, 13],
+    'M(b9#5)': [4, 8, 11, 13],
+    'M(b9#11)': [4, 7, 11, 13, 18]
+    
+}
 
 # Settings
 home = os.environ.get('HOME','./')
@@ -164,6 +241,7 @@ def generate_irishman():
 """
 ABC and audio corresponding
 """
+random.seed(42)
 def generate_abc_note():
     base_notes_big = ['C','^C','D','_E','E','F','^F','G','_A','A','_B','B']
     base_notes_small = ['c','^c','d','_e','e','f','^f','g','_a','a','_b','b']
@@ -175,7 +253,6 @@ def generate_abc_note():
         all_notes.append(base_notes_big[idx] + low)
         if idx == 11:
             low = low[:-1]
-            print(i, low)
     # c^2 to c^5
     high = ''
     for i in range(37):
@@ -187,17 +264,91 @@ def generate_abc_note():
     return all_notes
 all_notes = generate_abc_note()
 print(all_notes)
-metadata = open('./datasets/abc_audio/metadata.csv','w',encoding='utf-8',newline='')
-writer = csv.writer(metadata)
-writer.writerow(['wav_path','abc_notation'])
+def generate_note_audio():
+    """
+    Generate all 88 notes in a piano
+    """
+    metadata = open('./datasets/abc_audio/metadata.csv','w',encoding='utf-8',newline='')
+    writer = csv.writer(metadata)
+    writer.writerow(['wav_path','abc_notation','chord_name'])
 
-for i, note in enumerate(all_notes):
-    abc_audio = abc_piece_template.replace('{num}',str(random.randint(1, 100))).replace('{music}',note)
-    music_stream = converter.parse(abc_audio, format="abc")
-    music_stream.write("midi", fp='./test.mid')
-    # Please install a fluidsynth CLI before running this, doc: https://github.com/FluidSynth/fluidsynth/wiki/Download
-    fs = FluidSynth('../assets/default_sound_font.sf2')
-    fs.midi_to_audio('./test.mid', f'./datasets/abc_audio/wav/{i + 1}.wav')
-    writer.writerow([f'wav/{i + 1}.wav',abc_audio])
+    for i, note in enumerate(all_notes):
+        abc_audio = abc_piece_template.replace('{num}',str(random.randint(1, 100))).replace('{music}',note)
+        music_stream = converter.parse(abc_audio, format="abc")
+        music_stream.write("midi", fp='./test.mid')
+        # Please install a fluidsynth CLI before running this, doc: https://github.com/FluidSynth/fluidsynth/wiki/Download
+        fs = FluidSynth('../assets/default_sound_font.sf2')
+        fs.midi_to_audio('./test.mid', f'./datasets/abc_audio/wav/notes/{i + 1}.wav')
+        writer.writerow([f'wav/notes/{i + 1}.wav', abc_audio, '-'])
 
-metadata.close()
+    metadata.close()
+
+def generate_interval_audio(n: int = 1000):
+    """
+    generate intervals, steps:
+    1. randomly choose a root 
+    2. limit the range in 2 octaves: upper one and lower one, i.e. 24 semitones
+    3. generate a random interval
+    """
+    metadata = open('./datasets/abc_audio/metadata.csv','a',encoding='utf-8',newline='')
+    writer = csv.writer(metadata)
+    generated = []
+    for i in range(n):
+        root_idx = random.randint(0, 87)
+        note_range = all_notes[max(0, root_idx - 12): min(87, root_idx + 12) + 1]
+        other_note = random.choice(note_range)
+        if other_note == all_notes[root_idx]:
+            continue
+        interval = f'[{all_notes[root_idx]}{other_note}]'
+        if interval in generated:
+            continue
+        generated.append(interval)
+        abc_audio = abc_piece_template.replace('{num}',str(random.randint(1, n * 3))).replace('{music}',interval)
+        music_stream = converter.parse(abc_audio, format="abc")
+        music_stream.write("midi", fp='./test.mid')
+        fs = FluidSynth('../assets/default_sound_font.sf2')
+        fs.midi_to_audio('./test.mid', f'./datasets/abc_audio/wav/intervals/{i + 1}.wav')
+        writer.writerow([f'wav/intervals/{i + 1}.wav', abc_audio, '-'])
+    metadata.close()
+
+def generate_chord_audio(n: int = 2000):
+    """
+    generate audios, steps:
+    1. randomly choose a root 
+    2. choose a type of chord in the dict
+    3. generate a random chord
+    """
+    metadata = open('./datasets/abc_audio/metadata.csv','a',encoding='utf-8',newline='')
+    writer = csv.writer(metadata)
+    chords = list(chord_dict.items())
+    generated = []
+    for i in range(n):
+        root_idx = random.randint(0, 87)
+        notes = [all_notes[root_idx]]
+        chord_class, distances = random.choice(chords)
+        chord_name = all_notes[root_idx] + chord_class
+        if chord_name in generated:
+            continue
+        for d in distances:
+            idx = root_idx + d
+            if idx > 87:
+                break
+            notes.append(all_notes[idx])
+        
+        if len(notes) != len(distances) + 1:
+            continue
+
+        generated.append(chord_name)
+        chord = f"[{''.join(notes)}]"
+        abc_audio = abc_piece_template.replace('{num}',str(random.randint(1, n * 3))).replace('{music}',chord)
+        music_stream = converter.parse(abc_audio, format="abc")
+        music_stream.write("midi", fp='./test.mid')
+        fs = FluidSynth('../assets/default_sound_font.sf2')
+        fs.midi_to_audio('./test.mid', f'./datasets/abc_audio/wav/chords/{i + 1}.wav')
+        writer.writerow([f'wav/chords/{i + 1}.wav',abc_audio, chord_name])
+    metadata.close()
+
+generate_note_audio()
+generate_interval_audio(n=50)
+generate_chord_audio(n=100)
+
