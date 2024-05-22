@@ -127,6 +127,7 @@ uncommon_chord_dict = {
 # Settings
 home = os.environ.get('HOME','./')
 os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'
+#os.environ['HF_ENDPOINT'] = 'https://huggingface.co'
 os.environ['HF_HUB_ENABLE_HF_TRANSFER'] = '1'
 encodec_path = f'{home}/models/encodec_32khz'
 desc_path = f'{home}/IMelodist-1.5/IMelodist-1.5-7B/music_part2.json'
