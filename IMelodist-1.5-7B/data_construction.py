@@ -38,25 +38,35 @@ K:C
 """
 # the distance(in semitone) between each note and root of every common chord
 # Reference: https://www.bilibili.com/video/BV1Xa41117Wy/?vd_source=96a5e3c8d3ee54a5b89d246a66d277e3 
-chord_dict = {
-    'maj': [4, 7],
-    'min': [3, 7],
+# chord_dict = {
+    
+    
+# }
+
+# index 0 is the original chord, others are inversions
+common_chord_dict = {
+    'maj': [[4, 7], [-5, 4], [-8, -5]],
+    'min': [[3, 7], [-5, 3], [-9, -5]],
+    'maj7': [[4, 7, 11], [-1, 4, 7], [-5, -1, 4], [-8, -5, -1]],
+    'min7': [[3, 7, 10], [-2, 3, 7], [-5, -2, 3], [-9, -5, -2]],
+    '7':[[4, 7, 10], [-2, 4, 7], [-5, -2, 4], [-8, -5, -2]],
+    '9': [[4, 7, 10, 14], [2, 4, 7, 10], [-2, 2, 4, 7], [-5, -2, 2, 4], [-8, -5, -2, 2]],
+    'dim7': [[3, 6, 9], [-3, 3, 6], [-6, -3, 3], [-9, -6, -3]],
+    '7/8': [[4, 7, 10, 12]]
+}
+uncommon_chord_dict = {
     'dim': [3, 6],
     'add6': [4, 7, 9],
     'madd6': [3, 7, 9],
     'aug': [4, 8],
-    'maj7': [4, 7, 11],
-    'min7': [3, 7, 10],
-    '7':[4, 7, 10],
     'maj9':[4, 7, 11, 14],
     'min9': [3, 7, 10, 14],
-    '9': [4, 7, 10, 14],
-    'maj11': [4, 7, 11, 14, 17],
-    'min11': [3, 7, 10, 14, 17],
-    '11': [4, 7, 10, 14, 17],
-    'maj13': [4, 7, 11, 14, 17, 21],
-    'min13': [3, 7, 10, 14, 17, 21],
-    '13': [4, 7, 10, 14, 17, 21],
+    # 'maj11': [4, 7, 11, 14, 17],
+    # 'min11': [3, 7, 10, 14, 17],
+    # '11': [4, 7, 10, 14, 17],
+    # 'maj13': [4, 7, 11, 14, 17, 21],
+    # 'min13': [3, 7, 10, 14, 17, 21],
+    # '13': [4, 7, 10, 14, 17, 21],
     'sus2': [2, 7],
     'sus4': [5, 7],
     'dim7': [3, 6, 9],
@@ -68,7 +78,7 @@ chord_dict = {
     'madd9': [2, 3, 7],
     'mM7': [3, 7, 11],
     'mM9': [3, 7, 11, 14],
-    'mM11': [3, 7, 11, 14, 17],
+    # 'mM11': [3, 7, 11, 14, 17],
     '7sus2': [2, 7, 10],
     '7sus4': [5, 7, 10],
     '9sus4': [5, 7, 10, 14],
@@ -78,7 +88,7 @@ chord_dict = {
     'm7add4': [3, 5, 7, 10],
     '6/9': [4, 7, 9, 14],
     '7/6': [4, 7, 9, 11],
-    '9/6': [4, 7, 9, 11, 14],
+    # '9/6': [4, 7, 9, 11, 14],
     'M(b5)': [4, 6],
     'm(#5)': [3, 8],
     'M7(b5)': [4, 6, 11],
@@ -94,25 +104,25 @@ chord_dict = {
     'M7(#9)': [4, 7, 11, 15],
     'm7(#9)': [3, 7, 10, 15],
     '7(#9)': [4, 7, 10, 15],
-    'M7(#11)': [4, 7, 11, 14, 18],
-    'm7(#11)': [3, 7, 10, 14, 18],
-    '7(#11)': [4, 7, 10, 14, 18],
+    # 'M7(#11)': [4, 7, 11, 14, 18],
+    # 'm7(#11)': [3, 7, 10, 14, 18],
+    # '7(#11)': [4, 7, 10, 14, 18],
     'M(b9)': [1, 4, 7],
     'M(#11)': [4, 6, 7],
-    'm11(b5)': [3, 6, 10, 14, 17],
+    # 'm11(b5)': [3, 6, 10, 14, 17],
     '9(b5)': [4, 6, 10, 14],
     '9(#5)': [4, 8, 10, 14],
     'M9(#5)': [4, 8, 11, 14],
-    '11(b9)': [4, 7, 10, 13, 17],
+    # '11(b9)': [4, 7, 10, 13, 17],
     'aug7(#9)':[4, 8, 10, 15],
     'aug7': [4, 8, 10],
-    '13(b9)': [4, 7, 10, 13, 17, 21],
-    '13(#11)': [4, 7, 10, 14, 18, 21],
+    # '13(b9)': [4, 7, 10, 13, 17, 21],
+    # '13(#11)': [4, 7, 10, 14, 18, 21],
     'M(b9b5)': [4, 6, 11, 13],
     'M(b9#5)': [4, 8, 11, 13],
-    'M(b9#11)': [4, 7, 11, 13, 18]
-    
+    # 'M(b9#11)': [4, 7, 11, 13, 18]
 }
+
 
 # Settings
 home = os.environ.get('HOME','./')
@@ -294,9 +304,10 @@ def generate_interval_audio(n: int = 1000):
     metadata = open('./datasets/abc_audio/metadata.csv','a',encoding='utf-8',newline='')
     writer = csv.writer(metadata)
     generated = []
-    for i in range(n):
+    while len(generated) < n:
+        i = len(generated)
         root_idx = random.randint(0, 87)
-        note_range = all_notes[max(0, root_idx - 12): min(87, root_idx + 12) + 1]
+        note_range = all_notes[root_idx: min(87, root_idx + 12) + 1]
         other_note = random.choice(note_range)
         if other_note == all_notes[root_idx]:
             continue
@@ -312,22 +323,85 @@ def generate_interval_audio(n: int = 1000):
         writer.writerow([f'wav/intervals/{i + 1}.wav', abc_audio, '-'])
     metadata.close()
 
-def generate_chord_audio(n: int = 2000):
+def generate_common_chord_audio(n: int = 4000):
     """
-    generate audios, steps:
-    1. randomly choose a root 
-    2. choose a type of chord in the dict
-    3. generate a random chord
+    generate common chord audios, steps:
+    1. randomly choose a root
+    2. randomly choose a inversion
+    3. choose a type of chord in the dict
+    4. generate a random chord
+    5. convert to wave form
     """
     metadata = open('./datasets/abc_audio/metadata.csv','a',encoding='utf-8',newline='')
     writer = csv.writer(metadata)
-    chords = list(chord_dict.items())
+    chords = list(common_chord_dict.items())
     generated = []
-    for i in range(n):
+    
+    while len(generated) < n:
+        i = len(generated)
+        # step 1
         root_idx = random.randint(0, 87)
         notes = [all_notes[root_idx]]
+
+        # step 2
         chord_class, distances = random.choice(chords)
         chord_name = all_notes[root_idx] + chord_class
+
+        # step 3
+        distance_idx = random.randint(0, len(distances) - 1)
+        distance = distances[distance_idx]
+        if distance_idx != 0:
+            if root_idx + distance[0] >= 0:
+                chord_name = chord_name + f'/{all_notes[root_idx + distance[0]]}'
+        
+        # step 4
+        if chord_name in generated:
+            continue
+        for d in distance:
+            idx = root_idx + d
+            if idx < 0 or idx > 87:
+                break
+            notes.append(all_notes[idx])
+        
+        if len(notes) != len(distance) + 1:
+            continue
+
+        generated.append(chord_name)
+        chord = f"[{''.join(notes)}]"
+        abc_audio = abc_piece_template.replace('{num}',str(random.randint(1, n * 3))).replace('{music}',chord)
+
+        # step 5
+        music_stream = converter.parse(abc_audio, format="abc")
+        music_stream.write("midi", fp='./test.mid')
+        fs = FluidSynth('../assets/default_sound_font.sf2')
+        fs.midi_to_audio('./test.mid', f'./datasets/abc_audio/wav/common_chords/{i + 1}.wav')
+        writer.writerow([f'wav/common_chords/{i + 1}.wav',abc_audio, chord_name])
+    metadata.close()
+
+
+def generate_uncommon_chord_audio(n: int = 2000):
+    """
+    generate uncommon chord audios, steps:
+    1. randomly choose a root 
+    2. choose a type of chord in the dict
+    3. generate a random chord
+    4. convert to wave form
+    """
+    metadata = open('./datasets/abc_audio/metadata.csv','a',encoding='utf-8',newline='')
+    writer = csv.writer(metadata)
+    chords = list(uncommon_chord_dict.items())
+    generated = []
+    while len(generated) < n:
+        i = len(generated)
+        # step 1
+        root_idx = random.randint(0, 87)
+        notes = [all_notes[root_idx]]
+
+        # step 2
+        chord_class, distances = random.choice(chords)
+        chord_name = all_notes[root_idx] + chord_class
+
+        # step 3
         if chord_name in generated:
             continue
         for d in distances:
@@ -342,14 +416,17 @@ def generate_chord_audio(n: int = 2000):
         generated.append(chord_name)
         chord = f"[{''.join(notes)}]"
         abc_audio = abc_piece_template.replace('{num}',str(random.randint(1, n * 3))).replace('{music}',chord)
+
+        # step 4
         music_stream = converter.parse(abc_audio, format="abc")
         music_stream.write("midi", fp='./test.mid')
         fs = FluidSynth('../assets/default_sound_font.sf2')
-        fs.midi_to_audio('./test.mid', f'./datasets/abc_audio/wav/chords/{i + 1}.wav')
-        writer.writerow([f'wav/chords/{i + 1}.wav',abc_audio, chord_name])
+        fs.midi_to_audio('./test.mid', f'./datasets/abc_audio/wav/uncommon_chords/{i + 1}.wav')
+        writer.writerow([f'wav/uncommon_chords/{i + 1}.wav',abc_audio, chord_name])
     metadata.close()
 
 generate_note_audio()
 generate_interval_audio(n=50)
-generate_chord_audio(n=100)
+generate_common_chord_audio(n=100)
+generate_uncommon_chord_audio(n=50)
 
