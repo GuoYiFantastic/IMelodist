@@ -1,7 +1,7 @@
 chat/tmp/*
 comparison-test
 *.drawio
-IMelodist-7B/s00521-024-09418-2.pdf
 __pycache__
 dataset_abc_header.json
 datasets
+IMelodist-1.5-7B/test.mid
