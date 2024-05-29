@@ -300,12 +300,16 @@ def generate_interval_audio(n: int = 1000):
     1. randomly choose a root 
     2. limit the range in 2 octaves: upper one and lower one, i.e. 24 semitones
     3. generate a random interval
+    4. if retried for 200 times, get out of the loop
     """
     metadata = open('./datasets/abc_audio/metadata.csv','a',encoding='utf-8',newline='')
     writer = csv.writer(metadata)
     generated = []
+    retry = 0
     while len(generated) < n:
         i = len(generated)
+        if retry == 1000:
+            break
         root_idx = random.randint(0, 87)
         note_range = all_notes[root_idx: min(87, root_idx + 12) + 1]
         other_note = random.choice(note_range)
@@ -313,6 +317,7 @@ def generate_interval_audio(n: int = 1000):
             continue
         interval = f'[{all_notes[root_idx]}{other_note}]'
         if interval in generated:
+            retry += 1
             continue
         generated.append(interval)
         abc_audio = abc_piece_template.replace('{num}',str(random.randint(1, n * 3))).replace('{music}',interval)
@@ -321,6 +326,7 @@ def generate_interval_audio(n: int = 1000):
         fs = FluidSynth('../assets/default_sound_font.sf2')
         fs.midi_to_audio('./test.mid', f'./datasets/abc_audio/wav/intervals/{i + 1}.wav')
         writer.writerow([f'wav/intervals/{i + 1}.wav', abc_audio, '-'])
+    print(f"{len(generated)} of {n} generated")
     metadata.close()
 
 def generate_common_chord_audio(n: int = 4000):
@@ -336,9 +342,12 @@ def generate_common_chord_audio(n: int = 4000):
     writer = csv.writer(metadata)
     chords = list(common_chord_dict.items())
     generated = []
-    
+    retry = 0
     while len(generated) < n:
+        if retry == 1000:
+            break
         i = len(generated)
+
         # step 1
         root_idx = random.randint(0, 87)
         notes = [all_notes[root_idx]]
@@ -351,11 +360,12 @@ def generate_common_chord_audio(n: int = 4000):
         distance_idx = random.randint(0, len(distances) - 1)
         distance = distances[distance_idx]
         if distance_idx != 0:
-            if root_idx + distance[0] >= 0:
+            if root_idx + distance[0] >= 0 and root_idx + distance[0] <= 87:
                 chord_name = chord_name + f'/{all_notes[root_idx + distance[0]]}'
         
         # step 4
         if chord_name in generated:
+            retry += 1
             continue
         for d in distance:
             idx = root_idx + d
@@ -376,6 +386,7 @@ def generate_common_chord_audio(n: int = 4000):
         fs = FluidSynth('../assets/default_sound_font.sf2')
         fs.midi_to_audio('./test.mid', f'./datasets/abc_audio/wav/common_chords/{i + 1}.wav')
         writer.writerow([f'wav/common_chords/{i + 1}.wav',abc_audio, chord_name])
+    print(f"{len(generated)} of {n} generated")
     metadata.close()
 
 
@@ -391,8 +402,11 @@ def generate_uncommon_chord_audio(n: int = 2000):
     writer = csv.writer(metadata)
     chords = list(uncommon_chord_dict.items())
     generated = []
+    retry = 0
     while len(generated) < n:
         i = len(generated)
+        if retry == 1000:
+            break
         # step 1
         root_idx = random.randint(0, 87)
         notes = [all_notes[root_idx]]
@@ -403,6 +417,7 @@ def generate_uncommon_chord_audio(n: int = 2000):
 
         # step 3
         if chord_name in generated:
+            retry += 1
             continue
         for d in distances:
             idx = root_idx + d
@@ -423,10 +438,11 @@ def generate_uncommon_chord_audio(n: int = 2000):
         fs = FluidSynth('../assets/default_sound_font.sf2')
         fs.midi_to_audio('./test.mid', f'./datasets/abc_audio/wav/uncommon_chords/{i + 1}.wav')
         writer.writerow([f'wav/uncommon_chords/{i + 1}.wav',abc_audio, chord_name])
+    print(f"{len(generated)} of {n} generated")
     metadata.close()
 
-generate_note_audio()
-generate_interval_audio(n=50)
-generate_common_chord_audio(n=100)
-generate_uncommon_chord_audio(n=50)
+# generate_note_audio()
+# generate_interval_audio()
+# generate_common_chord_audio()
+generate_uncommon_chord_audio(n=500)
 
