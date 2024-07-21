@@ -14,6 +14,11 @@ Melodist ABC-notation music model based on InternLM2-chat.
 [![HF Dataset Increment](https://img.shields.io/badge/Datasets(increment)-Datasets?style=flat&logoColor=%235c5c5c&label=%F0%9F%A4%97Huggingface&color=%23d9b125)](https://huggingface.co/datasets/PommesPeter/imelodist-increment)
 [![HF Dataset SFT](https://img.shields.io/badge/Datasets(sft)-Datasets?style=flat&logoColor=%235c5c5c&label=%F0%9F%A4%97Huggingface&color=%23d9b125)](https://huggingface.co/datasets/PommesPeter/imelodist-sft)
 
+
+《旋律大师-IMelodist》项目获上海人工智能实验室主办的2024浦源大模型系列挑战赛春季赛创新创意奖！！！
+
+![image](https://github.com/user-attachments/assets/c05d57a6-b85f-4878-8536-b4da826458c7)
+
 <img src="./assets/banner.png"/>
 
 ## 📝 目录
